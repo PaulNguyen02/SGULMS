@@ -1,0 +1,169 @@
+<style>
+    .addbtn {
+        position: fixed;
+        bottom: 80px;
+        right: 35px;
+        outline: none;
+        border: none;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: #04AA6D; /* Blue background */
+        color: white;
+        transition: all 0.2s ease;
+        z-index: 3;
+    }
+    .updatebtn {
+        background-color: rgb(220, 220, 66); /* Yellow background */
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 10px 16px; /* Some padding */
+        font-size: 16px; /* Set a font size */
+        cursor: pointer; /* Mouse pointer on hover */
+        border-radius: 15%;
+    }
+    .deletebtn {
+        background-color: rgb(223, 64, 36); /* Red background */
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 12px 16px; /* Some padding */
+        font-size: 16px; /* Set a font size */
+        cursor: pointer; /* Mouse pointer on hover */
+        border-radius: 15%;
+    }
+    /* Darker background on mouse-over */
+    .addbtn:hover {
+        background-color: rgb(44, 114, 78);
+    }
+    .updatebtn:hover {
+        background-color: rgb(151, 141, 62);
+    }
+    .deletebtn:hover {
+        background-color: rgb(133, 51, 51);
+    }
+</style>
+<div class="form-popup" id="add-form">
+  <form action="/Thongbao/Create" class="form-container">
+    <h1>Tạo thông báo</h1>
+
+    <label for="email"><b>Tiêu đề</b></label>
+    <input type="text" placeholder="Nhập tiêu đề" name="title" required>
+
+    <label for="psw"><b>Nội dung</b></label>
+    <textarea placeholder="Nhập nội dung" name="content"></textarea>
+
+    <button type="submit" class="btn">Thông báo</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Hủy</button>
+  </form>
+</div>
+<div class="form-popup" id="update_form">
+  <form action="/Thongbao/Update" class="form-container">
+    <h1>Cập nhật thông báo</h1>
+
+    <label for="email"><b>Tiêu đề</b></label>
+    <input type="text" placeholder="Nhập tiêu đề" name="title" required>
+
+    <label for="psw"><b>Nội dung</b></label>
+    <textarea placeholder="Nhập nội dung" name="content"></textarea>
+
+    <button type="submit" class="btn">Thông báo</button>
+    <button type="button" class="btn cancel" onclick="closeForm1()">Hủy</button>
+  </form>
+</div>
+<div class="col-md-12">
+    <div id="container" class="white_shd full margin_bottom_30">
+        <div class="full graph_head">
+            <div class="inbox-head">                
+                <h3>Quản lý thông báo</h3>               
+                <div class="pull-right position search_inbox">
+                    <div class="input-append">
+                        <select id="choose" class="sr-input">
+                            <option value="1">Ngày mới nhất</option>
+                            <option value="2">Ngày cũ nhất</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>       
+        <div id="tableContainer" class="table_section padding_infor_info">
+            <button id="create" class="addbtn"><i class="fas fa-plus"></i></button>
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>STT</th>
+                            <th>Ngày chỉnh sửa</th>
+                            <th>Tiêu đề</th>
+                            <th>Nội dung</th> 
+                            <th>Cập nhật</th>
+                            <th>Xóa</th>              
+                        </tr>
+                    </thead>
+                    <tbody id="tbody1">
+                        {{#each notifications}} 
+                            <form>
+                                <tr name="{{this.STT}}">
+                                    <td>{{this.STT}}</td>
+                                    <td>{{this.NGAYCHINHSUA}}</td>
+                                    <td>{{this.TIEUDE}}</td>
+                                    <td>{{this.NOIDUNG}}</td>
+                                    <td>
+                                        <button id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
+                                    </td>   
+                                    <td>
+                                        <button type="submit" class="deletebtn"><i class="fas fa-trash"></i></button>
+                                    </td>                                                                                                                                     
+                                </tr>                                                           
+                            </form>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<script>
+    function closeForm(){
+       document.getElementById("add-form").style.display = "none";
+    }
+    function closeForm1(){
+        document.getElementById("update_form").style.display = "none";
+    }
+    document.getElementById("create").addEventListener("click", function(){
+        document.getElementById("add-form").style.display = "block";
+    })
+    var all_check = document.querySelectorAll("#update");
+    all_check.forEach(function(checkbox){
+        checkbox.addEventListener('click',function (){
+        document.getElementById("update_form").style.display = "block";
+        })
+    })
+</script>
+<!-- jQuery -->
+<script src="/Script/jquery.min.js"></script>
+<script src="/Script/popper.min.js"></script>
+<script src="/Script/bootstrap.min.js"></script>
+<!-- wow animation -->
+<script src="/Script/animate.js"></script>
+<!-- select country -->
+<script src="/Script/bootstrap-select.js"></script>
+<!-- owl carousel -->
+<script src="/Script/owl.carousel.js"></script> 
+<!-- chart js -->
+<script src="/Script/Chart.min.js"></script>
+<script src="/Script/Chart.bundle.min.js"></script>
+<script src="/Script/utils.js"></script>
+<script src="/Script/analyser.js"></script>
+<!-- nice scrollbar -->
+<script src="/Script/perfect-scrollbar.min.js"></script>
+<script>
+var ps = new PerfectScrollbar('#sidebar');
+</script>
+<!-- custom js -->
+<script src="/Script/custom.js"></script>
+<script src="/Script/chart_custom_style1.js"></script>

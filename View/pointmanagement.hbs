@@ -1,0 +1,136 @@
+<style>
+    .updatebtn {
+        background-color: rgb(220, 220, 66); /* Yellow background */
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 10px 16px; /* Some padding */
+        font-size: 16px; /* Set a font size */
+        cursor: pointer; /* Mouse pointer on hover */
+        border-radius: 15%;
+    }
+    /* Darker background on mouse-over */
+    .updatebtn:hover {
+        background-color: rgb(151, 141, 62);
+    }
+</style>
+<div class="form-popup" id="update_form">
+  <form action="/Diem/Update" class="form-container">
+    <h1>Hiệu chỉnh thông tin điểm số</h1>
+
+    <label><b>Điểm quá trình 10</b></label>
+    <input type="text" name="mid10" required>
+
+    <label><b>Điểm cuối kỳ 10</b></label>
+    <input type="text" name="exam10" required>
+
+    <label><b>Điểm tổng kết 10</b></label>
+    <input type="text" name="final10" required>
+
+    <label><b>Điểm tổng kết 4</b></label>
+    <input type="text" name="final4" required>
+
+    <label><b>Xếp loại</b></label>
+    <input type="text" name="ranking" required>
+
+    <p>Kết quả</p>
+    <input type="radio" value="1">
+    <label>Đậu</label>
+    <input type="radio" value="0">
+    <label>Không Đậu</label><br>
+
+    <button type="submit" class="btn">Cập Nhật</button>
+    <button type="button" class="btn cancel" onclick="closeForm1()">Hủy</button>
+  </form>
+</div>
+<div class="col-md-12">
+    <div id="container" class="white_shd full margin_bottom_30">
+        <div class="full graph_head">
+            <div class="inbox-head">                
+                <h3>Quản lý điểm số</h3>               
+                <form action="/Dkmh/Search" class="pull-right position search_inbox" method="POST">
+                    <div class="input-append">
+                        <input type="text" class="sr-input" name="search" list="searchlist" placeholder="Mã môn học">
+                        <button class="btn sr-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>       
+        <div id="tableContainer" class="table_section padding_infor_info">
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Mã môn học</th>
+                            <th>Tên môn học</th>
+                            <th>MSSV</th>
+                            <th>Tên sinh viên</th>
+                            <th>Lớp</th>
+                            <th>Điểm quá trình (10)</th>   
+                            <th>Điểm cuối kỳ (10)</th>
+                            <th>Điểm tổng kết (10)</th>
+                            <th>Điểm tổng kết (4)</th>
+                            <th>Xếp loại</th>  
+                            <td>Hiệu chỉnh</td>             
+                        </tr>
+                    </thead>
+                    <tbody id="tbody1">
+                        {{#each points}} 
+                            <form>
+                                <tr name="{{this.MAMH}}">
+                                    <td>{{this.MAMH}}</td>  
+                                    <td>{{this.TENMH}}</td>                        
+                                    <td>{{this.MASO}}</td>
+                                    <td>{{this.HOTEN}}</td>
+                                    <td>{{this.LOP}}</td>
+                                    <td>{{this.DIEMQUATRINH10}}</td> 
+                                    <td>{{this.DIEMCUOIKY10}}</td>    
+                                    <td>{{this.DIEMTONGKET10}}</td> 
+                                    <td>{{this.DIEMTONGKET4}}</td>     
+                                    <td>{{this.XEPLOAI}}</td>                                     
+                                    <td>
+                                        <button id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
+                                    </td>                                                                                                                                     
+                                </tr>                                                           
+                            </form>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<script>
+    function closeForm1(){
+        document.getElementById("update_form").style.display = "none";
+    }
+    var all_check = document.querySelectorAll("#update");
+    all_check.forEach(function(checkbox){
+        checkbox.addEventListener('click',function (){
+        document.getElementById("update_form").style.display = "block";
+        })
+    })
+</script>
+<!-- jQuery -->
+<script src="/Script/jquery.min.js"></script>
+<script src="/Script/popper.min.js"></script>
+<script src="/Script/bootstrap.min.js"></script>
+<!-- wow animation -->
+<script src="/Script/animate.js"></script>
+<!-- select country -->
+<script src="/Script/bootstrap-select.js"></script>
+<!-- owl carousel -->
+<script src="/Script/owl.carousel.js"></script> 
+<!-- chart js -->
+<script src="/Script/Chart.min.js"></script>
+<script src="/Script/Chart.bundle.min.js"></script>
+<script src="/Script/utils.js"></script>
+<script src="/Script/analyser.js"></script>
+<!-- nice scrollbar -->
+<script src="/Script/perfect-scrollbar.min.js"></script>
+<script>
+var ps = new PerfectScrollbar('#sidebar');
+</script>
+<!-- custom js -->
+<script src="/Script/custom.js"></script>
+<script src="/Script/chart_custom_style1.js"></script>

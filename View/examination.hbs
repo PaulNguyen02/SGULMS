@@ -1,0 +1,63 @@
+<div class="col-md-12">
+    <div class="white_shd full margin_bottom_30">
+        <div class="full graph_head">
+            <div class="heading1 margin_0">
+                <h2>Học kỳ 1 - Năm học 2023-2024</h2>
+            </div>
+        </div>
+        <div class="table_section padding_infor_info">
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã Môn Học</th>
+                            <th>Sĩ số</th>
+                            <th>Ngày Thi</th>
+                            <th>Giờ bắt đầu</th>
+                            <th>Phòng thi</th>
+                            <th>Cơ sở</th>
+                            <th>Số thứ tự thí sinh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each time}}
+                            <tr>
+                                <td>{{this.STT}}</td>
+                                <td>{{this.MAMH}}</td>
+                                <td>{{this.SISO}}</td>
+                                <td>{{this.NGAYTHI}}</td>
+                                <td>{{this.GIOBD}}</td>
+                                <td>{{this.PHONGTHI}}</td>
+                                <td>{{this.COSO}}</td>
+                                <td>{{this.STTPHONGTHI}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/Script/jquery.min.js"></script>
+<script src="/Script/popper.min.js"></script>
+<script src="/Script/bootstrap.min.js"></script>
+<!-- wow animation -->
+<script src="/Script/animate.js"></script>
+<!-- select country -->
+<script src="/Script/bootstrap-select.js"></script>
+<!-- owl carousel -->
+<script src="/Script/owl.carousel.js"></script> 
+<!-- chart js -->
+<script src="/Script/Chart.min.js"></script>
+<script src="/Script/Chart.bundle.min.js"></script>
+<script src="/Script/utils.js"></script>
+<script src="/Script/analyser.js"></script>
+<!-- nice scrollbar -->
+<script src="/Script/perfect-scrollbar.min.js"></script>
+<script>
+var ps = new PerfectScrollbar('#sidebar');
+</script>
+<!-- custom js -->
+<script src="/Script/custom.js"></script>
+<script src="/Script/chart_custom_style1.js"></script>   

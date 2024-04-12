@@ -1,0 +1,56 @@
+      <div class="login-box">
+         <div id="bubble1" class="bubble"></div>  
+         <div id="bubble2" class="bubble"></div>
+         <div id="info">
+            <i class="fas fa-info-circle"></i>
+            <span class="tooltiptext">Đối với sinh viên Username là mssv, còn với giảng viên username là mã giảng viên</span>
+         </div>
+         <h2>Đăng nhập</h2>
+         <div class="center">
+            <img width="150" src="/Content/images/SGU-LOGO.png" alt="#" />
+         </div>
+         <form action="/Session" method="POST">
+            <div class="user-box">
+               <input type="text" name="mssv" required="">
+               <label>Tên người dùng</label>
+            </div>
+            <div class="user-box">
+               <input type="password" name="password" required="">
+               <label>Mật khẩu</label>
+            </div>
+            <button type="submit">
+               <span></span>
+               <span></span>
+               <span></span>
+               <span></span>
+               Đăng nhập
+            </button>
+         </form>
+      </div>
+   
+<script>
+   /*function Warning(){
+      var alertStr = "{{alert}}";
+      if(alertStr!=null){
+         alert(alertStr);
+      }else{
+         alert("Chào mừng bạn");
+      }
+   }*/
+   
+</script>
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!-- wow animation -->
+<script src="/js/animate.js"></script>
+<!-- select country -->
+<script src="/js/bootstrap-select.js"></script>
+<!-- nice scrollbar -->
+<script src="/js/perfect-scrollbar.min.js"></script>
+<script>
+   var ps = new PerfectScrollbar('#sidebar');
+</script>
+<!-- custom js -->
+<script src="/js/custom.js"></script>

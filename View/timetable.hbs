@@ -1,0 +1,326 @@
+<div class="col-md-12">
+    <div id="container" class="white_shd full margin_bottom_30">
+        <div class="full graph_head">
+            <div class="inbox-head">                
+                <h3>Thời khóa biểu học kỳ {{semester.HOCKY}}-{{semester.NIENKHOA}}</h3>               
+                <div class="pull-right position search_inbox" method="POST">
+                    <div class="input-append">
+                        <select id="choose" class="sr-input">
+                            <option value="1">Thời khóa biểu tuần</option>
+                            <option value="2">Thời khóa biểu học kỳ</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tableContainer" class="table_section padding_infor_info">
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Tiết</th>
+                            <th>Thứ 2</th>
+                            <th>Thứ 3</th>
+                            <th>Thứ 4</th>
+                            <th>Thứ 5</th>
+                            <th>Thứ 6</th>
+                            <th>Thứ 7</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <tr>
+                            <td>1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div id="tableContainer1" class="table_section padding_infor_info">
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Mã Môn Học</th>
+                            <th>Tên Môn Học</th>
+                            <th>Nhóm</th>
+                            <th>Tổ</th>
+                            <th>Số tín chỉ</th>
+                            <th>Lớp</th>
+                            <th>Thứ</th>
+                            <th>Tiết BĐ</th>
+                            <th>Số tiết</th>
+                            <th>Phòng</th>
+                            <th>Giảng viên</th>
+                            <th>Thời gian học</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody1">
+                        {{#each time}} 
+                            <tr>
+                                <td>{{this.MAMH}}</td>
+                                <td>{{this.TENMH}}</td>
+                                <td>{{this.NHOM}}</td>
+                                <td>{{this.THUCHANH}}</td> 
+                                <td>{{this.STC}}</td>
+                                <td>{{this.LOP}}</td> 
+                                <td>{{this.THU}}</td> 
+                                <td>{{this.TIETBD}}</td>     
+                                <td>{{this.SOTIET}}</td> 
+                                <td>{{this.PHONG}}</td>
+                                <td>{{this.GIANGVIEN}}</td> 
+                                <td>{{this.TUANBD}}</td>                                                                                                             
+                            </tr>                           
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>  
+            function getRandomColor() {
+                const red = Math.floor(Math.random() * 155);
+                const green = Math.floor(Math.random() * 155);
+                const blue = Math.floor(Math.random() * 155);
+                const color = `rgb(${red}, ${green}, ${blue})`;
+                return color;
+            }
+
+            function isDarkColor(color) {
+                const rgb = color.match(/\d+/g);
+                const sum = rgb.reduce((acc, val) => acc + parseInt(val), 0);
+                const threshold = 255 * 3 / 2; 
+                return sum < threshold;
+            }
+
+            function Default(){
+                let container = document.getElementById("tableContainer");
+                let container1 = document.getElementById("tableContainer1");
+                container.style.display = "block";
+                container1.style.display = "none";
+            }   
+            
+            const select = document.getElementById("choose");
+            select.addEventListener('change',function(){
+                if(select.value == "1"){
+                    let container = document.getElementById("tableContainer");
+                    let container1 = document.getElementById("tableContainer1");
+                    container.style.display = "block";
+                    container1.style.display = "none";
+                }
+                else{
+                    let container = document.getElementById("tableContainer");
+                    let container1 = document.getElementById("tableContainer1");
+                    container.style.display = "none";
+                    container1.style.display = "block";
+                }
+            });
+
+            
+            function Load(){
+                var tbody = document.getElementById('tbody1');
+                for (let i = 0; i < tbody.rows.length; i++) {
+                    const mamh = tbody.rows[i].cells[0].innerHTML;
+                    const tenmh = tbody.rows[i].cells[1].innerHTML;
+                    const to = tbody.rows[i].cells[3].innerHTML;
+                    const thu = tbody.rows[i].cells[6].innerHTML;
+                    const tietBD = tbody.rows[i].cells[7].innerHTML;
+                    const soTiet = tbody.rows[i].cells[8].innerHTML;
+                    const phong = tbody.rows[i].cells[9].innerHTML;
+                    const color = getRandomColor();
+                    SortTable(mamh, tenmh, thu, tietBD, soTiet, phong, to, color);
+                }
+            }
+            
+            function SortTable(mamh, tenmh, thu, tietBD, soTiet, phong, to, color){                
+                let colIndex = 0;
+                switch (thu) {
+                    case "HAI":
+                        colIndex = 1;
+                        break;
+                    case "BA":
+                        colIndex = 2;
+                        break;
+                    case "TƯ":
+                        colIndex = 3;
+                        break;
+                    case "NĂM":
+                        colIndex = 4;
+                        break;
+                    case "SÁU":
+                        colIndex = 5;
+                        break;
+                    case "BẢY":
+                        colIndex = 6;
+                        break;
+                }
+                const table = document.querySelector('.table');
+                const tbody = table.querySelector('#tbody');
+                let rowIndex = tietBD - 1;
+                let Count = 0;
+                for (let i = 1; i <= soTiet; i++) {                   
+                    const row = tbody.rows[rowIndex];
+                    if (row &&  Count == 0) {
+                        const cell = row.cells[colIndex];
+                        if (cell) {
+                            if(to == "true"){
+                                cell.style.backgroundColor = color;
+                                if(isDarkColor(color)){
+                                    cell.style.color = 'white';
+                                    cell.textContent = mamh+"-"+tenmh+"-"+phong+"-"+"thực hành"; // Thêm tên môn học
+                                }
+                            }
+                            if(to == "false"){
+                                cell.style.backgroundColor = color;                                
+                                if(isDarkColor(color)){
+                                    cell.style.color = 'white';
+                                    cell.textContent = mamh+"-"+tenmh+"-"+phong+"-"+"lý thuyết"; // Thêm tên môn học
+                                }
+                            }
+                        }
+                    }else{
+                        const cell = row.cells[colIndex];
+                        if (cell) {
+                            if(to == "true"){
+                                cell.style.backgroundColor = color;
+                            }
+                            if(to == "false"){
+                                cell.style.backgroundColor = color;
+                            }
+                        }
+                    }
+                    rowIndex++;
+                    Count++;
+                }
+            }
+            Default();
+            Load();
+        </script>
+    </div>
+</div>
+<script src="/Script/jquery.min.js"></script>
+<script src="/Script/popper.min.js"></script>
+<script src="/Script/bootstrap.min.js"></script>
+<!-- wow animation -->
+<script src="/Script/animate.js"></script>
+<!-- select country -->
+<script src="/Script/bootstrap-select.js"></script>
+<!-- owl carousel -->
+<script src="/Script/owl.carousel.js"></script> 
+<!-- chart js -->
+<script src="/Script/Chart.min.js"></script>
+<script src="/Script/Chart.bundle.min.js"></script>
+<script src="/Script/utils.js"></script>
+<script src="/Script/analyser.js"></script>
+<!-- nice scrollbar -->
+<script src="/Script/perfect-scrollbar.min.js"></script>
+<script>
+var ps = new PerfectScrollbar('#sidebar');
+</script>
+<!-- custom js -->
+<script src="/Script/custom.js"></script>
+<script src="/Script/chart_custom_style1.js"></script>   

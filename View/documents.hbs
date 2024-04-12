@@ -1,0 +1,92 @@
+<style>
+    .btn {
+        background-color: rgb(5, 236, 147); /* Blue background */
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 12px 16px; /* Some padding */
+        font-size: 16px; /* Set a font size */
+        cursor: pointer; /* Mouse pointer on hover */
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+        background-color: rgb(188, 228, 11);
+    }
+</style>
+<div class="col-md-12">
+    <div class="white_shd full margin_bottom_30">
+        <div class="full graph_head">
+            <div class="inbox-head">
+                <h3>Tải tài liệu tham khảo</h3>
+                <form action="/Subjectselect/Search" class="pull-right position search_inbox" method="POST">
+                    <div class="input-append">
+                        <input type="text" class="sr-input" name="search" list="searchlist" placeholder="Tìm kiếm tên tài liệu">
+                        <datalist id="searchlist">
+                            <option value="author">Tác giả</option>  
+                            <!--{{#each datalist}} 
+                                <option value="{{this.MAMH}}">{{this.TENMH}}</option>  
+                            {{/each}} -->
+                        </datalist>
+                        <datalist id="searchlist">
+                            <option value="subject">Môn học</option>  
+                            <!--{{#each datalist}} 
+                                <option value="{{this.MAMH}}">{{this.TENMH}}</option>  
+                            {{/each}} -->
+                        </datalist>
+                        <button class="btn sr-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="table_section padding_infor_info">
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên tài liệu</th>
+                            <th>Môn học</th>
+                            <th>Ngày Đăng</th>
+                            <th>Tải xuống</th>
+                        </tr>
+                    </thead>
+                    <tbody>    
+                        {{#each documents}}            
+                            <form>
+                                <tr>
+                                    <td>{{this.STT}}</td>
+                                    <td>{{this.TIEUDE}}</td>
+                                    <td>{{this.TENMONHOC}}</td>
+                                    <td>{{this.NGAYDANG}}</td>
+                                    <td><a href="{{this.LINKTAI}}" id="downloadButton" class="btn"><i class="fas fa-download"></i></a></td>
+                                </tr>
+                            </form>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/Script/jquery.min.js"></script>
+<script src="/Script/popper.min.js"></script>
+<script src="/Script/bootstrap.min.js"></script>
+<!-- wow animation -->
+<script src="/Script/animate.js"></script>
+<!-- select country -->
+<script src="/Script/bootstrap-select.js"></script>
+<!-- owl carousel -->
+<script src="/Script/owl.carousel.js"></script> 
+<!-- chart js -->
+<script src="/Script/Chart.min.js"></script>
+<script src="Script/Chart.bundle.min.js"></script>
+<script src="/Script/utils.js"></script>
+<script src="/Script/analyser.js"></script>
+<!-- nice scrollbar -->
+<script src="/Script/perfect-scrollbar.min.js"></script>
+<script>
+var ps = new PerfectScrollbar('#sidebar');
+</script>
+<!-- custom js -->
+<script src="/Script/custom.js"></script>
+<script src="/Script/chart_custom_style1.js"></script>   

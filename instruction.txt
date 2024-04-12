@@ -1,0 +1,3 @@
+Tải các thư viện
+Tạo cấu trúc thư mục
+Tạo file app.js

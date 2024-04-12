@@ -1,0 +1,269 @@
+   <button class="chatbot-toggler">
+        <i class="fas fa-comment"></i>
+    </button>
+    <div class="chatbot">
+        <header>
+            <h2>Gia sư ảo SGU</h2>
+            <span class="close-btn material-symbols-outlined"><i class="fas fa-user-alt"></i></span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined"><i class="fas fa-user-alt"></i></span>
+                <p>Xin chào 👋<br>Hỏi tôi bất kì điều gì?</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Nhập nội dung..." spellcheck="false" required></textarea>
+            <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+    </div>
+    <div class="midde_cont">
+       <div class="container-fluid">
+          <div class="row column_title">
+             <div class="col-md-12">
+                <div class="page_title">
+                   <h2>Tổng quan</h2>
+                </div>
+             </div>
+          </div>         
+          <div class="row column1 social_media_section">
+             <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons fb margin_bottom_30">
+                   <div class="social_icon">
+                      <h1 style="color: white;">Điểm số</h1>
+                   </div>
+                   <div class="social_cont">
+                      <ul>
+                         <li>
+                            <span>Hệ 10.0 <strong>{{grade10}}/10.0</strong></span>
+                         </li>
+                         <li>
+                            <span>Hệ 4.0 <strong> {{grade4}}/4.0</strong></span>
+                         </li>
+                      </ul>
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons tw margin_bottom_30">
+                   <div class="social_icon">
+                      <h1 style="color: white;">Học lực</h1>
+                   </div>
+                   <div class="social_cont">
+                      <ul>
+                         <li>
+                            <span>Xếp loại: <strong>{{ranking}}</strong></span>
+                         </li>
+                      </ul>
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons linked margin_bottom_30">
+                   <div class="social_icon">
+                      <h1 style="color: white;">Số tín chỉ tích lũy</h1>
+                   </div>
+                   <div class="social_cont">
+                      <ul>
+                         <li>
+                            <span><strong>{{total_credit}}</strong></span>
+                            <span>Đã hoàn thành</span>
+                         </li>
+                         <li>
+                            <span><strong>{{remain_credit}}</strong></span>
+                            <span>Chưa hoàn thành</span>
+                         </li>
+                      </ul>
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons google_p margin_bottom_30">
+                   <div class="social_icon">
+                      <h1 style="color: white;">Học phí đã đóng</h1>
+                   </div>
+                   <div class="social_cont">
+                      <ul>
+                         <li>
+                            <span><strong>{{fee}}</strong></span>
+                            <span>VND</span>
+                         </li>
+                      </ul>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="row column4 graph">
+             <div class="col-md-6 margin_bottom_30">
+                <div class="dash_blog">
+                   <div class="dash_blog_inner">
+                      <div class="dash_head">
+                         <h3><span><i class="fa fa-bell-o"></i> Thông báo mới</span></h3>
+                      </div>
+                      <div class="task_list_main">
+                         <ul class="task_list">
+                            <li><a href="#">Đăng ký môn học Học kỳ II, 2023-2024</a><br><strong>10:00 AM</strong></li>
+                            <li><a href="#">Kỳ thi kết thúc học phần HK I, 2023-2024 (cập nhật ngày 20/12/2023)</a><br><strong>10:00 AM</strong></li>
+                            <li><a href="#">Thông báo đăng ký môn học Học kỳ II, năm học 2023-2024</a><br><strong>11:00 AM</strong></li>
+                            <li><a href="#">Đăng ký môn học (đợt bổ sung)</a><br><strong>10:00 AM</strong></li>
+                            <li><a href="#">Thông báo đóng học phí học kỳ II, 2023-2024</a><br><strong>02:00 PM</strong></li>
+                         </ul>
+                      </div>
+                      <div class="read_more">
+                         <div class="center"><a class="main_bt read_bt" href="#">Xem tiếp</a></div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6">
+                <div class="dash_blog">
+                   <div class="dash_blog_inner">
+                      <div class="dash_head">
+                         <h3><span><i class="fa fa-info-circle" aria-hidden="true"></i> Biểu mẫu và hướng dẫn</span></h3>
+                      </div>
+                      <div class="msg_list_main">
+                         <ul class="msg_list">
+                            <li>                              
+                               <span>
+                                 <a href="https://thongtindaotao.sgu.edu.vn/#/home/listbaiviet/bm/page/1/baivietct/-7998567345601580803">
+                                    <span class="name_user">Đơn học cải thiện bằng học phần (tự chọn) tương đương</span>
+                                    <span class="msg_user">Đơn tường trình v/v học cải thiện bằng học phần (tự chọn) tương đương</span>
+                                 </a>
+                               </span>
+                            </li>
+                            <li>                              
+                               <span>
+                                 <a href="https://thongtindaotao.sgu.edu.vn/#/home/listbaiviet/bm/page/1/baivietct/-8736906028469397357">
+                                    <span class="name_user">Đơn quy đổi mã học phần</span>
+                                    <span class="msg_user">Đơn tường trình v/v đăng ký học phần quy đổi</span>
+                                 </a>
+                               </span>
+                            </li>
+                            <li>                     
+                               <span>
+                                 <a href="https://thongtindaotao.sgu.edu.vn/#/home/listbaiviet/bm/page/1/baivietct/-8255283746820628900"></a>
+                                    <span class="name_user">Đơn xin phúc khảo bài thi</span>
+                                 </a>
+                               </span>                              
+                            </li>
+                            <li>                               
+                               <span>
+                                 <a href="https://thongtindaotao.sgu.edu.vn/#/home/listbaiviet/hd/page/1/baivietct/-8602058588597376021"></a>
+                                    <span class="name_user">Hướng dẫn ĐKMH trực tuyến</span>
+                                    <span class="msg_user">Hướng dẫn sinh viên đăng ký môn học trực tuyến tại web Thông tin đào tạo</span>
+                                 </a>
+                               </span>
+                            </li>
+                            <li>                               
+                               <span>
+                                 <a href="https://thongtindaotao.sgu.edu.vn/#/home/listbaiviet/hd/page/1/baivietct/-8221789385917928100">
+                                    <span class="name_user">Những điểm cần lưu ý khi ĐKMH</span>
+                                    <span class="msg_user">Những điểm SV cần lưu ý khi tham gia ĐKMH qua mạng</span>
+                                 </a>
+                               </span>
+                            </li>
+                         </ul>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <!-- end dashboard inner -->
+ </div>
+</div>
+</div>
+<script>
+
+      const chatbotToggler = document.querySelector(".chatbot-toggler");
+      const closeBtn = document.querySelector(".close-btn");
+      const chatbox = document.querySelector(".chatbox");
+      const chatInput = document.querySelector(".chat-input textarea");
+      const sendChatBtn = document.querySelector(".chat-input span");
+      
+      let userMessage = null;
+      const inputInitHeight = chatInput.scrollHeight;
+      
+      const createChatLi = (message, className) => {
+          const chatLi = document.createElement("li");
+          chatLi.classList.add("chat", `${className}`);
+          let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined"></span><p></p>`;
+          chatLi.innerHTML = chatContent;
+          chatLi.querySelector("p").textContent = message;
+          return chatLi;
+      }
+      
+      const generateResponse = (chatElement) => {
+          const messageElement = chatElement.querySelector("p");
+          const prompt1 = "Tự xưng là gia sư ảo SGU";
+          const prompt2 = "Nội dung trả lời chủ yếu xoay quanh về các ngành công nghệ thông tin, tài chính ngân hàng, marketting, điện tử viễn thông, điện,...";
+          fetch("/Giasuao/Result", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json',},
+            body: JSON.stringify({ content: userMessage + prompt1 + prompt2 }),
+          }).then(res => res.json()).then(data => {
+              messageElement.textContent = data.result["answer"];
+          }).catch(() => {
+              messageElement.classList.add("error");
+              messageElement.textContent = "Có lỗi xảy ra vui lòng thử lại.";
+          }).finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
+      }
+      
+      const handleChat = () => {
+          userMessage = chatInput.value.trim(); 
+          if(!userMessage) return;
+      
+          chatInput.value = "";
+          chatInput.style.height = `${inputInitHeight}px`;
+      
+          chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+          chatbox.scrollTo(0, chatbox.scrollHeight);
+          
+          setTimeout(() => {
+              const incomingChatLi = createChatLi("Đang xử lý...", "incoming");
+              chatbox.appendChild(incomingChatLi);
+              chatbox.scrollTo(0, chatbox.scrollHeight);
+              generateResponse(incomingChatLi);
+          }, 600);
+      }
+      
+      chatInput.addEventListener("input", () => {
+          chatInput.style.height = `${inputInitHeight}px`;
+          chatInput.style.height = `${chatInput.scrollHeight}px`;
+      });
+      
+      chatInput.addEventListener("keydown", (e) => {
+          if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+              e.preventDefault();
+              handleChat();
+          }
+      });
+      
+      sendChatBtn.addEventListener("click", handleChat);
+      closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
+      chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+  </script>  
+<!-- jQuery -->
+<script src="/Script/jquery.min.js"></script>
+<script src="/Script/popper.min.js"></script>
+<script src="/Script/bootstrap.min.js"></script>
+<!-- wow animation -->
+<script src="/Script/animate.js"></script>
+<!-- select country -->
+<script src="/Script/bootstrap-select.js"></script>
+<!-- owl carousel -->
+<script src="/Script/owl.carousel.js"></script> 
+<!-- chart js -->
+<script src="/Script/Chart.min.js"></script>
+<script src="/Script/Chart.bundle.min.js"></script>
+<script src="/Script/utils.js"></script>
+<script src="/Script/analyser.js"></script>
+<!-- nice scrollbar -->
+<script src="/Script/perfect-scrollbar.min.js"></script>
+<script>
+var ps = new PerfectScrollbar('#sidebar');
+</script>
+<!-- custom js -->
+<script src="/Script/custom.js"></script>
+<script src="/Script/chart_custom_style1.js"></script>

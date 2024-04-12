@@ -1,0 +1,109 @@
+<div class="col-md-12">
+    <div class="white_shd full margin_bottom_30">
+        <div class="full graph_head">
+            <div class="inbox-head">                
+                    <h3>Thông tin đăng ký môn học</h3>               
+            </div>
+        </div>
+        <div class="full inbox_inner_section">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full padding_infor_info">
+                        <div class="mail-box">
+                            <aside class="lg-side">  
+                                <div class="full graph_head">
+                                    <div class="heading1 margin_0">
+                                            <h2>Học phí học kỳ {{current_semester.HOCKY}}-{{current_semester.NIENKHOA}}</h2>
+                                    </div>
+                                </div>                                   
+                                <div class="table_section padding_infor_info">
+                                    <div class="table-responsive-sm">
+                                        <table class="table">
+                                            <thead class="table-primary">
+                                                <tr>
+                                                    <th>Mã Môn Học</th>
+                                                    <th>Tên Môn Học</th>
+                                                    <th>Nhóm</th>
+                                                    <th>Lớp</th> 
+                                                    <th>Số tín chỉ</th>
+                                                    <th>Học phí</th>                                                                                                       
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each registed_subject}} 
+                                                    <tr>
+                                                        <td>{{this.MAMH}}</td>
+                                                        <td>{{this.TENMH}}</td>
+                                                        <td>{{this.NHOM}}</td>
+                                                        <td>{{this.LOP}}</td> 
+                                                        <td>{{this.STC}}</td>
+                                                        <td>{{this.HOCPHI}}</td>                                                                                                                   
+                                                    </tr>                                       
+                                                {{/each}} 
+                                                <tr>                                                    
+                                                    <td>Tổng học phí kỳ này: </td>
+                                                    <td>{{fee}} VND</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>                                   
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="white_shd full margin_bottom_30">
+                                        <div class="full graph_head">
+                                            <div class="heading1 margin_0">
+                                                <h2>Học phí các học kỳ</h2>
+                                            </div>
+                                        </div>
+                                        <div class="table_section padding_infor_info">
+                                            <div class="table-responsive-sm">
+                                                <table class="table">
+                                                    <thead class="table-success">
+                                                        <tr>
+                                                            <th>STT</th>
+                                                            <th>Niên học học kỳ</th>
+                                                            <th>Học phí chưa giảm</th>
+                                                            <th>Miễn giảm</th>
+                                                            <th>Phải thu</th>
+                                                            <th>Đã thu</th>
+                                                            <th>Còn nợ</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/Script/jquery.min.js"></script>
+<script src="/Script/popper.min.js"></script>
+<script src="/Script/bootstrap.min.js"></script>
+<!-- wow animation -->
+<script src="/Script/animate.js"></script>
+<!-- select country -->
+<script src="/Script/bootstrap-select.js"></script>
+<!-- owl carousel -->
+<script src="/Script/owl.carousel.js"></script> 
+<!-- chart js -->
+<script src="/Script/Chart.min.js"></script>
+<script src="Script/Chart.bundle.min.js"></script>
+<script src="/Script/utils.js"></script>
+<script src="/Script/analyser.js"></script>
+<!-- nice scrollbar -->
+<script src="/Script/perfect-scrollbar.min.js"></script>
+<script>
+var ps = new PerfectScrollbar('#sidebar');
+</script>
+<!-- custom js -->
+<script src="/Script/custom.js"></script>
+<script src="/Script/chart_custom_style1.js"></script>   

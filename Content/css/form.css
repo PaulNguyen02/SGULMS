@@ -1,0 +1,63 @@
+.form-popup {
+    position: fixed;
+    top: 45%;
+    left: 60%; /* Đặt left ở giữa */
+    transform: translate(-50%, -50%); /* Dịch chuyển điểm neo của form vào giữa */
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #9e9b9b;
+    z-index: 9;
+    overflow-y: auto; /* Add scrollbar when content overflows vertically */
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    border-style: dashed;
+  }
+  
+  h1{
+    text-align: center;
+  }
+
+  /* Add styles to the form container */
+  .form-container {
+    width: auto;
+    padding: 10px;
+    background-color: #E7E9EB;
+  }
+  
+  /* Full-width input fields */
+  .form-container input[type=text], input[type=date], input[type=email], input[type=number] , input[type=time], .form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container textarea:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: rgb(223, 64, 36);;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }

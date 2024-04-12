@@ -1,0 +1,207 @@
+<div class="col-md-12">
+    <div class="white_shd full margin_bottom_30">
+        <div class="full graph_head">
+            <div class="inbox-head">                
+                <h3>Thông tin đăng ký môn học</h3>               
+                <form action="/Dkmh/Search" class="pull-right position search_inbox" method="POST">
+                    <div class="input-append">
+                        <input type="text" class="sr-input" name="search" list="searchlist" placeholder="Tìm kiếm">
+                        <datalist id="searchlist">
+                            {{#each datalist}} 
+                                <option value="{{this.MAMH}}">{{this.TENMH}}</option>  
+                            {{/each}} 
+                        </datalist>
+                        <button class="btn sr-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="full inbox_inner_section">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full padding_infor_info">
+                        <div class="mail-box">
+                            <aside class="sm-side">                                
+                                <ul class="nav nav-pills nav-stacked labels-category inbox-divider">
+                                    <li>
+                                        <h4>Khoa</h4>
+                                    </li>
+                                    {{#each faculty_list}} 
+                                        <li><a href="Filter?tenkhoa={{this.MAKHOA}}"><i class="fa fa-circle"></i> {{this.TENKHOA}} </a></li>            
+                                    {{/each}}                                    
+                                </ul>
+                            </aside>
+                            <aside class="lg-side">  
+                                <div class="full graph_head">
+                                    <div class="heading1 margin_0">
+                                        <h2>Đăng ký môn học học kỳ {{current_semester.HOCKY}}-{{current_semester.NIENKHOA}}</h2>
+                                    </div>
+                                </div>                                   
+                                <div class="table_section padding_infor_info">
+                                    <div class="table-responsive-sm">
+                                        <table class="table">
+                                            <thead class="table-primary">
+                                                <tr>
+                                                    <th>Mã Môn Học</th>
+                                                    <th>Tên Môn Học</th>
+                                                    <th>Nhóm</th>
+                                                    <th>Số tín chỉ</th>
+                                                    <th>Lớp</th>
+                                                    <th>Thứ</th>
+                                                    <th>Tiết BĐ</th>
+                                                    <th>Số tiết</th>
+                                                    <th>Phòng</th>
+                                                    <th>Giảng viên</th>
+                                                    <th>Còn lại</th>
+                                                    <th>Tuần bắt đầu</th>
+                                                    <th>Thực hành</th>
+                                                    <th>Đăng ký</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each result}} 
+                                                    <form>
+                                                        <tr>
+                                                            <td>{{this.MAMH}}</td>
+                                                            <td>{{this.TENMH}}</td>
+                                                            <td>{{this.NHOM}}</td>
+                                                            <td>{{this.STC}}</td>
+                                                            <td>{{this.LOP}}</td>
+                                                            <td>{{this.THU}}</td>
+                                                            <td>{{this.TIETBD}}</td>
+                                                            <td>{{this.SOTIET}}</td>
+                                                            <td>{{this.PHONG}}</td>
+                                                            <td>{{this.GIANGVIEN}}</td>
+                                                            <td>{{this.SISO}}</td>
+                                                            <td>{{this.TUANBD}}</td>
+                                                            <td>{{this.THUCHANH}}</td>
+                                                            <td><input type="checkbox" class="rowCheckbox" id="{{this.MAMH}}" name="{{this.MAMH}}" value="{{this.MAMH}}"></td>
+                                                        </tr>
+                                                    </form>
+                                                {{/each}} 
+                                            </tbody>
+                                        </table>
+                                        <script>
+                                            var all_check = document.querySelectorAll(".rowCheckbox");
+                                            all_check.forEach(function(checkbox){
+                                                checkbox.addEventListener('change',function (){
+                                                    let row = checkbox.closest('tr');
+                                                    // Get data from the cells in the row
+                                                    let mamh = row.cells[0].textContent;
+                                                    let siso = row.cells[10].textContent;
+                                                    let thuc_hanh = row.cells[12].textContent;
+                                                    fetch('/Dkmh/Register', {
+                                                        method: 'POST',
+                                                        headers: {
+                                                            'Content-Type': 'application/json',
+                                                        },
+                                                        body: JSON.stringify({
+                                                            "mamh": mamh,
+                                                            "siso": siso,
+                                                            "thuchanh": thuc_hanh
+                                                        }),
+                                                    }).then(response => {
+                                                            if (!response.ok) {
+                                                                throw new Error('Network response was not ok');
+                                                            }                               
+                                                            return response.json(); // This returns a promise
+                                                        })
+                                                    });
+                                                });                                                                 
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="white_shd full margin_bottom_30">
+                                        <div class="full graph_head">
+                                            <div class="heading1 margin_0">
+                                                <h2>Các môn học đã đăng ký</h2>
+                                            </div>
+                                        </div>
+                                        <div class="table_section padding_infor_info">
+                                            <div class="table-responsive-sm">
+                                                <table class="table">
+                                                    <thead class="table-success">
+                                                        <tr>
+                                                            <th>Mã Môn Học</th>
+                                                            <th>Tên Môn Học</th>
+                                                            <th>Nhóm</th>
+                                                            <th>Tổ</th>
+                                                            <th>Số tín chỉ</th>
+                                                            <th>Lớp</th>
+                                                            <th>Hủy đăng ký</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{#each registed_subject}}
+                                                            <form>
+                                                                <tr>
+                                                                    <td>{{this.MAMH}}</td>
+                                                                    <td>{{this.TENMH}}</td>
+                                                                    <td>{{this.NHOM}}</td>
+                                                                    <td>{{this.THUCHANH}}</td>
+                                                                    <td>{{this.STC}}</td>
+                                                                    <td>{{this.LOP}}</td>
+                                                                    <td><button type="submit" class="alert alert-danger" id="{{this.MAMH}}" name="{{this.MAMH}}">Hủy</button></td>
+                                                                </tr>
+                                                            </form>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                                <script>
+                                                    var buttons = document.querySelectorAll(".alert-danger");
+                                                        buttons.forEach(function(button){
+                                                            button.addEventListener('click',function (){                                                        
+                                                                let row1 = button.closest('tr');
+                                                                let mamh1 = row1.cells[0].textContent;
+                                                                fetch('/Dkmh/Delete', {
+                                                                    method: 'POST',
+                                                                    headers: {
+                                                                        'Content-Type': 'application/json',
+                                                                    },
+                                                                    body: JSON.stringify({
+                                                                        "mamh": mamh1,
+                                                                    }),
+                                                                }).then(response => {
+                                                                        if (!response.ok) {
+                                                                            throw new Error('Network response was not ok');
+                                                                        }                               
+                                                                        return response.json(); // This returns a promise
+                                                                    })
+                                                                });
+                                                            }); 
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/Script/jquery.min.js"></script>
+<script src="/Script/popper.min.js"></script>
+<script src="/Script/bootstrap.min.js"></script>
+<!-- wow animation -->
+<script src="/Script/animate.js"></script>
+<!-- select country -->
+<script src="/Script/bootstrap-select.js"></script>
+<!-- owl carousel -->
+<script src="/Script/owl.carousel.js"></script> 
+<!-- chart js -->
+<script src="/Script/Chart.min.js"></script>
+<script src="Script/Chart.bundle.min.js"></script>
+<script src="/Script/utils.js"></script>
+<script src="/Script/analyser.js"></script>
+<!-- nice scrollbar -->
+<script src="/Script/perfect-scrollbar.min.js"></script>
+<script>
+var ps = new PerfectScrollbar('#sidebar');
+</script>
+<!-- custom js -->
+<script src="/Script/custom.js"></script>
+<script src="/Script/chart_custom_style1.js"></script>   

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cổng thông tin đào tạo SGU</title>
+    <link rel="icon" href="/Content/images/SGU-LOGO.png" type="image/png" />
+      <!-- bootstrap css -->
+    <link rel="stylesheet" href="/Content/css/bootstrap.min.css" />
+      <!-- site css -->
+    <link rel="stylesheet" href="/Content/css/style.css" />
+      <!-- responsive css -->
+    <link rel="stylesheet" href="/Content/css/responsive.css" />
+      <!-- color css -->
+    <link rel="stylesheet" href="/Content/css/color_2.css" />
+      <!-- select bootstrap -->
+    <link rel="stylesheet" href="/Content/css/bootstrap-select.css" />
+      <!-- scrollbar css -->
+    <link rel="stylesheet" href="/Content/css/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="/Content/css/chat.css" />
+      <!-- custom css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css" />
+</head>
+<body>
+    <div class="full_container">
+         <div class="inner_container">
+            {{>menu}}  <!--Render phần nội dung của menu partial vào-->
+            <div id="content">
+              {{>topbar}}  <!--Render phần nội dung của topbar partial vào-->
+              {{{body}}}      <!--Render phần nội dung của trang khác vào-->
+              {{>footer}}
+            </div>
+         </div>
+    </div>
+</body>
+</html>
