@@ -5,7 +5,7 @@ class SemesterFeeController{
         let alert = "Phiên của bạn đã hết hạn, Đăng nhập lại !";
         const maso = req.cookies.id;
         let current_semester = semester_fee.getSemester();
-        let registed_subject = await subject_fee.getRegistedList(maso);
+        let registed_subject = await semester_fee.getRegistedList(maso);
         let fee = calc.TotalSubjectinSemester(registed_subject);
         if(req.cookies)
             return res.render("semesterfee", 

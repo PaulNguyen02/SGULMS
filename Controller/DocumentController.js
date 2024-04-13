@@ -31,5 +31,14 @@ class ExaminationController{
         else
             return res.render('signin', { title: 'my other page', layout: 'main1', alert });
     }
+
+    async create(){
+
+    }
+
+
+    async delete(){
+        
+    }
 }
 module.exports = new ExaminationController;

@@ -179,5 +179,17 @@ class SubjectsModel{
             }
         }) 
     }
+
+    async Create(req,res){
+        
+    }
+
+    async Update(req,res){
+        
+    }
+
+    async Purge(req,res){
+        
+    }
 }
 module.exports = new SubjectsModel;

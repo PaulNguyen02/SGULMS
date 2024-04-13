@@ -36,5 +36,13 @@ class StudentModel{
             }
         })  
     }
+
+    async Update(id){
+
+    }
+
+    async Delete(id){
+
+    }
 }
 module.exports = new StudentModel;

@@ -18,7 +18,6 @@ class SchoolYearController{
 
     async Detail(req, res){
         const stt = req.query["stt"];
-        console.log(stt);
         const [detail] = await Promise.all([
             year.getDetail(stt)
         ]);
