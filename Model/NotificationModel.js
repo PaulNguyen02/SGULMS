@@ -17,5 +17,17 @@ class NotificationModel{
             }
         })  
     }
+
+    async Create(){
+
+    }
+
+    async Update(id){
+
+    }
+
+    async Delete(id){
+
+    }
 }
 module.exports = new NotificationModel;

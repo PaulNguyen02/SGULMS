@@ -19,5 +19,13 @@ class Document{
     async Download(download_link){
         const folderPath = '/path/to/your/folder';
     }
+
+    async Create(){
+
+    }
+
+    async Delete(id){
+        
+    }
 }
 module.exports = new Document;

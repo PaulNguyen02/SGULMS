@@ -17,5 +17,13 @@ class OpinionModel{
             }
         })  
     }
+
+    async Read(id){
+
+    }
+
+    async Delete(id){
+
+    }
 }
 module.exports = new OpinionModel;

@@ -4,14 +4,10 @@ class GradeController{
     async index(req, res){
         let alert = "Phiên của bạn đã hết hạn, Đăng nhập lại !";
         const [semester, grade_list] = await Promise.all([
-            grade.getSemester(),
+            grade.getSemester(),            
             grade.getGrade(req.cookies.id)
         ]);
-        grade_list.forEach(grade => {     //Cập nhật lại các tiết thực hành
-            const active_buffer = Buffer.from(grade.KETQUA);
-            const active_boolean = Boolean(active_buffer.readInt8());
-            grade.KETQUA = active_boolean;
-        });
+
         if(req.cookies)
             return res.render('grade',
             {

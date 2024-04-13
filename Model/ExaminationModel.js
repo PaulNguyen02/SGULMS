@@ -53,5 +53,17 @@ class ExaminationController{
             reject(e)
         }
     }
+
+    async Create(){
+
+    }
+
+    async Update(id){
+
+    }
+
+    async Delete(id){
+
+    }
 }
 module.exports = new ExaminationController;

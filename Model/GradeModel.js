@@ -59,5 +59,11 @@ class GradeModel{
             }
         })    
     }
+
+
+    async Update(id){
+
+    }
+
 }
 module.exports = new GradeModel;

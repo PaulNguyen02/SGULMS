@@ -17,5 +17,17 @@ class ClassModel{
             }
         })  
     }
+
+    async Create(){
+
+    }
+
+    async Update(id){
+        
+    }
+
+    async Delete(id){
+        
+    }
 }
 module.exports = new ClassModel;
