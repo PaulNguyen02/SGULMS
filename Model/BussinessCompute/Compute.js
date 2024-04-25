@@ -42,15 +42,15 @@ class Compute{
     
     Ranking(mark){
         if(mark >= 8.5)
-            return "Giỏi";
+            return 'A';
         if(mark >= 7.0 && mark < 8.5)
-            return "Khá";
+            return 'B';
         if(mark >= 5.5 && mark < 7.0)
-            return "Trung bình";
+            return 'C';
         if(mark >= 4  && mark < 5.5)
-            return "Yếu";
+            return 'D';
         else
-            return "Kém";
+            return 'F';
     }
 
     Decision(mark){
@@ -70,6 +70,13 @@ class Compute{
 
     RemainCredit(total){
         return 155-total;
+    }
+
+    Result(ranking){
+        if(ranking == 'F')
+            return 0;
+        else
+            return 1;
     }
 }
 module.exports = new Compute;

@@ -32,13 +32,21 @@ class ExaminationController{
             return res.render('signin', { title: 'my other page', layout: 'main1', alert });
     }
 
-    async create(){
-
+    async create(req, res){
+        const title = req.body["title"];
+        const date = req.body["date"];
+        const link = req.body["link"];
+        const uploader = req.body["uploader"];
+        const subjectname = req.body["subject"];
+        Promise.all([doc.Create(title, date, link, uploader, subjectname)]);
+        res.redirect('/Tailieu/List');
     }
 
 
-    async delete(){
-        
+    async delete(req, res){
+        const id = req.query["stt"];
+        Promise.all([doc.Delete(id)]);
+        res.redirect('/Tailieu/List');
     }
 }
 module.exports = new ExaminationController;

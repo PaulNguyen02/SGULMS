@@ -34,11 +34,22 @@ class SchoolYearController{
     }
 
     async Create(req,res){
-        
+        const semester = req.body["semester"]; 
+        const start = req.body["start"]; 
+        const end = req.body["end"]; 
+        const schoolyear = req.body["schoolyear"]; 
+        Promise.all([year.Create(semester, start, end, schoolyear)]);
+        res.redirect('/Nienkhoa/List');
     }
 
     async Update(req,res){
-        
+        const id = req.body["sy_id"];
+        const semester = req.body["semester"]; 
+        const start = req.body["start"]; 
+        const end = req.body["end"]; 
+        const schoolyear = req.body["schoolyear"]; 
+        Promise.all([year.Update(id, semester, start, end, schoolyear)]);
+        res.redirect('/Nienkhoa/List');
     }
 }
 module.exports = new SchoolYearController;

@@ -17,15 +17,29 @@ class ClassesController{
     }
 
     async Create(req,res){
-
+        const class_id = req.body["class_id"]; 
+        const faculty = req.body["faculty"]; 
+        const year = req.body["years"]; 
+        const number = req.body["total"]; 
+        const teacher = req.body["teacher"];
+        Promise.all([cls.Create(class_id, faculty, year, number, teacher)]);
+        res.redirect('/Lop/List');
     }
 
     async Update(req,res){
-        
+        const id = req.body["class_id"];
+        const faculty = req.body["faculty"]; 
+        const year = req.body["years"]; 
+        const  number = req.body["total"]; 
+        const teacher = req.body["teacher"];
+        Promise.all([cls.Update(id, faculty, year, number, teacher)]);
+        res.redirect('/Lop/List');
     }
 
     async Delete(req,res){
-        
+        const id = req.query["id"];
+        Promise.all([cls.Delete(id)]);
+        res.redirect('/Lop/List');
     }
 
 }

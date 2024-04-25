@@ -36,16 +36,43 @@ class SchoolYearModel{
         })  
     }
 
-    async Create(){
-
+    async Create(semester, start, end, schoolyear){
+        return new Promise((resolve, reject) =>{
+            try{
+                con.query("INSERT INTO NIENKHOAHOCKY ( HOCKY, TGBATDAU, TGKETTHUC, NIENKHOA)"+
+                "VALUES ('"+semester+"', '"+start+"', '"+end+"','"+schoolyear+"');", 
+                function (err, result) {
+                    if (err){
+                        reject(err);
+                        return; 
+                    }        
+                    return resolve(result)
+                });
+            }
+            catch(e){
+                reject(e)
+            }
+        })  
     }
 
-    async Update(id){
-
+    async Update(id, semester, start, end, schoolyear){
+        return new Promise((resolve, reject) =>{
+            try{
+                con.query("UPDATE NIENKHOAHOCKY SET HOCKY='"+semester+"', TGBATDAU='"+start+"', TGKETTHUC='"+end+"', NIENKHOA='"+schoolyear+"'"+
+                " WHERE STT='"+id+"'",
+                function (err, result) {
+                    if (err){
+                        reject(err);
+                        return; 
+                    }        
+                    return resolve(result)
+                });
+            }
+            catch(e){
+                reject(e)
+            }
+        })  
     }
 
-    async Delete(id){
-
-    }
 }
 module.exports = new SchoolYearModel;

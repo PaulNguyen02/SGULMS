@@ -14,5 +14,5 @@ router.post('/Delete',subjectselectcontroller.delete);
 router.get('/List', subjectselectcontroller.list);
 router.post('/Create', subjectselectcontroller.create);
 router.post('/Update', subjectselectcontroller.update);
-router.post('/Purge', subjectselectcontroller.purge);
+router.get('/Purge', subjectselectcontroller.purge);
 module.exports = router; 

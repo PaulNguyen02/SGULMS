@@ -5,3 +5,4 @@ npm i morgan
 npm i express-handlebars (quản lý giao diện)
 npm i express-session (quản lý session)
 npm cookie-parser (quản lý cookie)
+npm multer (upload file)

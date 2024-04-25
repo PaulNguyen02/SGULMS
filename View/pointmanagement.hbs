@@ -14,8 +14,14 @@
     }
 </style>
 <div class="form-popup" id="update_form">
-  <form action="/Diem/Update" class="form-container">
+  <form action="/Diem/Update" class="form-container" method="POST">
     <h1>Hiệu chỉnh thông tin điểm số</h1>
+
+    <label><b>Mã môn học</b></label>
+    <input type="text" id="subject_id" name="subject_id" readonly>
+
+    <label><b>Mã sinh viên</b></label>
+    <input type="text" id="student_id" name="student_id" readonly>
 
     <label><b>Điểm quá trình 10</b></label>
     <input type="text" name="mid10" required>
@@ -76,7 +82,7 @@
                     <tbody id="tbody1">
                         {{#each points}} 
                             <form>
-                                <tr name="{{this.MAMH}}">
+                                <tr>
                                     <td>{{this.MAMH}}</td>  
                                     <td>{{this.TENMH}}</td>                        
                                     <td>{{this.MASO}}</td>
@@ -88,7 +94,7 @@
                                     <td>{{this.DIEMTONGKET4}}</td>     
                                     <td>{{this.XEPLOAI}}</td>                                     
                                     <td>
-                                        <button id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
+                                        <button name={{this.MAMH}}-{{this.MASO}} id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
                                     </td>                                                                                                                                     
                                 </tr>                                                           
                             </form>
@@ -105,9 +111,16 @@
         document.getElementById("update_form").style.display = "none";
     }
     var all_check = document.querySelectorAll("#update");
-    all_check.forEach(function(checkbox){
-        checkbox.addEventListener('click',function (){
+    all_check.forEach(function(button){
+        button.addEventListener('click',function (){
         document.getElementById("update_form").style.display = "block";
+        var str = button.getAttribute('name');
+        var part = str.split("-");
+        var sub_id = part[0];
+        var stu_id = part[1];
+        var form = document.getElementById("update_form");
+        form.querySelector('#subject_id').value = sub_id;
+        form.querySelector('#student_id').value = stu_id;
         })
     })
 </script>

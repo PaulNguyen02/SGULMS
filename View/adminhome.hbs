@@ -47,7 +47,7 @@
     }
 </style>
 <div class="form-popup" id="add-form">
-  <form action="/Thongbao/Create" class="form-container">
+  <form action="/Thongbao/Create" method="POST" class="form-container">
     <h1>Tạo thông báo</h1>
 
     <label for="email"><b>Tiêu đề</b></label>
@@ -61,14 +61,20 @@
   </form>
 </div>
 <div class="form-popup" id="update_form">
-  <form action="/Thongbao/Update" class="form-container">
+  <form action="/Thongbao/Update" method="POST" class="form-container">
     <h1>Cập nhật thông báo</h1>
+
+    <label><b>Mã thông báo</b></label>
+    <input type="text" id="noti_id" name="noti_id" readonly>
 
     <label for="email"><b>Tiêu đề</b></label>
     <input type="text" placeholder="Nhập tiêu đề" name="title" required>
 
     <label for="psw"><b>Nội dung</b></label>
     <textarea placeholder="Nhập nội dung" name="content"></textarea>
+
+    <label><b>Mã số</b></label>
+    <input type="text" id="admin_id" name="admin_id" readonly>
 
     <button type="submit" class="btn">Thông báo</button>
     <button type="button" class="btn cancel" onclick="closeForm1()">Hủy</button>
@@ -79,14 +85,6 @@
         <div class="full graph_head">
             <div class="inbox-head">                
                 <h3>Quản lý thông báo</h3>               
-                <div class="pull-right position search_inbox">
-                    <div class="input-append">
-                        <select id="choose" class="sr-input">
-                            <option value="1">Ngày mới nhất</option>
-                            <option value="2">Ngày cũ nhất</option>
-                        </select>
-                    </div>
-                </div>
             </div>
         </div>       
         <div id="tableContainer" class="table_section padding_infor_info">
@@ -106,16 +104,16 @@
                     <tbody id="tbody1">
                         {{#each notifications}} 
                             <form>
-                                <tr name="{{this.STT}}">
+                                <tr>
                                     <td>{{this.STT}}</td>
                                     <td>{{this.NGAYCHINHSUA}}</td>
                                     <td>{{this.TIEUDE}}</td>
                                     <td>{{this.NOIDUNG}}</td>
                                     <td>
-                                        <button id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
+                                        <button name={{this.STT}}-{{this.MASO}} id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
                                     </td>   
                                     <td>
-                                        <button type="submit" class="deletebtn"><i class="fas fa-trash"></i></button>
+                                        <a  href="/Thongbao/Delete?id={{this.STT}}" type="submit" class="deletebtn"><i class="fas fa-trash"></i></a>
                                     </td>                                                                                                                                     
                                 </tr>                                                           
                             </form>
@@ -138,11 +136,19 @@
         document.getElementById("add-form").style.display = "block";
     })
     var all_check = document.querySelectorAll("#update");
-    all_check.forEach(function(checkbox){
-        checkbox.addEventListener('click',function (){
+    all_check.forEach(function(button){
+        button.addEventListener('click',function (){
         document.getElementById("update_form").style.display = "block";
+        var str = button.getAttribute('name');
+        var part = str.split("-");
+        var noti_id = part[0];
+        var admin_id = part[1];
+        var form = document.getElementById("update_form");
+        form.querySelector('#noti_id').value = noti_id;
+        form.querySelector('#admin_id').value = admin_id;
         })
     })
+
 </script>
 <!-- jQuery -->
 <script src="/Script/jquery.min.js"></script>

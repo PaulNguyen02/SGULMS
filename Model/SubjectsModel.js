@@ -180,16 +180,61 @@ class SubjectsModel{
         }) 
     }
 
-    async Create(req,res){
-        
+    async Create(mamh, tenmh, nhom, siso, stc, lop, thu, tietbd, sotiet, phong, giangvien, tuanbd, hocphi, khoa, thuchanh){
+        return new Promise((resolve, reject) =>{
+            try{
+                con.query("INSERT INTO MONHOC (MAMH, TENMH, NHOM, SISO ,STC, LOP, THU, TIETBD, SOTIET, PHONG, GIANGVIEN, TUANBD, HOCPHI, KHOA, THUCHANH )"+
+                " VALUES ('"+mamh+"', '"+tenmh+"', '"+nhom+"','"+siso+"','"+stc+"','"+lop+"','"+thu+"','"+tietbd+"','"+sotiet+"','"+phong+"','"+giangvien+"','"+tuanbd+"','"+hocphi+"','"+khoa+"','"+thuchanh+"');", 
+                function (err, result) {
+                    if (err){
+                        reject(err);
+                        return; 
+                    }        
+                    return resolve(result)
+                });
+            }
+            catch(e){
+                reject(e)
+            }
+        })  
     }
 
-    async Update(req,res){
-        
+    async Update(id, tenmh, group, siso, stc, lop, thu, tietbd, sotiet, phong, giangvien, tuanbd, hocphi, khoa, practice){
+        return new Promise((resolve, reject) =>{
+            try{
+                con.query("UPDATE MONHOC SET " + 
+                "TENMH='"+tenmh+"', SISO='"+siso+"', STC='"+stc+"', LOP='"+lop+"',THU='"+thu+"', TIETBD='"+tietbd+"', SOTIET='"+sotiet+"', PHONG='"+phong+"', GIANGVIEN='"+giangvien+"', TUANBD='"+tuanbd+"', HOCPHI='"+hocphi+"', KHOA='"+khoa+"'"
+                +" WHERE MAMH='"+id+"' AND NHOM='"+group+"' AND THUCHANH='"+practice+"'",
+                function (err, result) {
+                    if (err){
+                        reject(err);
+                        return; 
+                    }        
+                    return resolve(result)
+                });
+            }
+            catch(e){
+                reject(e)
+            }
+        })  
     }
 
-    async Purge(req,res){
-        
+    async Purge(id, group, practice){
+        return new Promise((resolve, reject) =>{
+            try{
+                con.query("DELETE FROM MONHOC WHERE MALOP='"+id+"' AND NHOM='"+group+"' AND THUCHANH='"+practice+"'",
+                function (err, result) {
+                    if (err){
+                        reject(err);
+                        return; 
+                    }        
+                    return resolve(result)
+                });
+            }
+            catch(e){
+                reject(e)
+            }
+        })  
     }
 }
 module.exports = new SubjectsModel;

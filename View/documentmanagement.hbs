@@ -35,7 +35,7 @@
     }
 </style>
 <div class="form-popup" id="add-form">
-  <form action="/Tailieu/Create" class="form-container">
+  <form action="/Tailieu/Create" method="POST" class="form-container">
     <h1>Đăng tải tài liệu</h1>
 
     <label><b>Tiêu đề</b></label>
@@ -94,7 +94,7 @@
                                     <td>{{this.TENMONHOC}}</td>
                                     <td>{{this.LINKTAI}}</td>                                       
                                     <td>
-                                        <button type="submit" class="deletebtn"><i class="fas fa-trash"></i></button>
+                                        <a href="/Tailieu/Delete?stt={{this.STT}}" type="submit" class="deletebtn"><i class="fas fa-trash"></i></a>
                                     </td>                                                                                                                                     
                                 </tr>                                                           
                             </form>

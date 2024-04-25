@@ -88,29 +88,32 @@
   <form action="/Sinhvien/Update" method="POST" class="form-container">
     <h1>Chỉnh sửa thông tin cho sinh viên</h1>
 
+    <label><b>ID</b></label>
+    <input type="text" id="std_id" name="id" readonly>
+
     <label><b>Họ và tên</b></label>
-    <input type="text" placeholder="RayGaming" name="name" required>
+    <input type="text" placeholder="RayGaming" name="name">
 
     <label><b>Ngày sinh</b></label>
     <input type="date" name="dob" >
 
     <label><b>Địa chỉ</b></label>
-    <input type="text" placeholder="123ST" name="address" required>
+    <input type="text" placeholder="123ST" name="address">
 
     <label><b>Email</b></label>
-    <input type="email" placeholder="example@email.com" name="email" required>
+    <input type="email" placeholder="example@email.com" name="email">
 
     <label><b>Lớp</b></label>
-    <input type="text" placeholder="DCT12XX" name="class" required>
+    <input type="text" placeholder="DCT12XX" name="class">
 
     <label><b>Ngành</b></label>
-    <input type="text" placeholder="KTPM" name="department" required>
+    <input type="text" placeholder="KTPM" name="department">
 
     <label><b>Khoa</b></label>
-    <input type="text" placeholder="CNTT" name="faculty" required>
+    <input type="text" placeholder="CNTT" name="faculty">
 
     <label><b>Niên khóa</b></label>
-    <input type="text" placeholder="2020-2025" name="year" required>
+    <input type="text" placeholder="2020-2025" name="year">
 
     <button id="create_btn" type="submit" class="btn">Cập nhật</button>
     <button type="button" class="btn cancel" onclick="closeForm1()">Hủy</button>
@@ -121,7 +124,7 @@
         <div class="full graph_head">
             <div class="inbox-head">                
                 <h3>Danh sách sinh viên</h3>               
-                <form action="/Dkmh/Search" class="pull-right position search_inbox" method="POST">
+                <form action="/Sinhvien/Search" class="pull-right position search_inbox" method="POST">
                     <div class="input-append">
                         <input type="text" class="sr-input" name="search" list="searchlist" placeholder="Mã sinh viên">
                         <button class="btn sr-btn" type="submit"><i class="fa fa-search"></i></button>
@@ -152,7 +155,7 @@
                     <tbody id="tbody1">
                         {{#each students}} 
                             <form>
-                                <tr name="{{this.MASO}}">
+                                <tr>
                                     <td>{{this.MASO}}</td>
                                     <td><img src="{{this.HINHANH}}" width="100", height="100"></td>
                                     <td>{{this.HOTEN}}</td>
@@ -164,10 +167,10 @@
                                     <td>{{this.KHOA}}</td>
                                     <td>{{this.NIENKHOA}}</td>
                                     <td>
-                                        <button id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
+                                        <button name="{{this.MASO}}" id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
                                     </td>   
                                     <td>
-                                        <button type="submit" class="deletebtn"><i class="fas fa-trash"></i></button>
+                                        <button name="{{this.MASO}}" id="delete" type="button" class="deletebtn"><i class="fas fa-trash"></i></button>
                                     </td>                                                                                                                                     
                                 </tr>                                                           
                             </form>
@@ -190,9 +193,20 @@
         document.getElementById("add-form").style.display = "block";
     })
     var all_check = document.querySelectorAll("#update");
-    all_check.forEach(function(checkbox){
-        checkbox.addEventListener('click',function (){
+    all_check.forEach(function(button){
+        button.addEventListener('click',function (){
         document.getElementById("update_form").style.display = "block";
+        var maso = button.getAttribute('name');
+        var form = document.getElementById("update_form");
+        form.querySelector('#std_id').value = maso;
+        })
+    })
+
+    var all_click = document.querySelectorAll("#delete");
+     all_click.forEach(function(button){
+        button.addEventListener('click',function (){
+        var maso = button.getAttribute('name');
+        window.location.href = "/Sinhvien/Delete?id="+maso;
         })
     })
 </script>
