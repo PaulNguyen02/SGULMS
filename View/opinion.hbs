@@ -49,17 +49,17 @@
                     <tbody id="tbody1">
                         {{#each opinions}} 
                             <form>
-                                <tr name="{{this.STT}}">
+                                <tr>
                                     <td>{{this.STT}}</td>                        
                                     <td>{{this.THOIGIAN}}</td>
                                     <td>{{this.TIEUDE}}</td>
                                     <td>{{this.NOIDUNG}}</td>
                                     <td>{{this.MASO}}</td>                                          
                                     <td>
-                                        <button id="update" type="button" class="markbtn"><i class="fas fa-check"></i></button>                                    
+                                        <a href="/Ykien/Read?id={{this.STT}}" id="update" type="button" class="markbtn"><i class="fas fa-check"></i></a>                                    
                                     </td>                                                                  
                                     <td>
-                                        <button type="submit" class="deletebtn"><i class="fas fa-trash"></i></button>
+                                        <a href="/Ykien/Delete?id={{this.STT}}" type="submit" class="deletebtn"><i class="fas fa-trash"></i></a>
                                     </td>                                                                                                                                     
                                 </tr>                                                           
                             </form>

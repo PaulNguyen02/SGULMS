@@ -58,14 +58,13 @@
     }
 </style>
 <div class="form-popup" id="add-form">
-  <form action="/lichthi/Create" class="form-container">
+  <form action="/lichthi/CreateDetail" method="POST" class="form-container">
     <h1>Tạo thông tin lịch thi</h1>
-
-    <label><b>Phòng thi</b></label>
-    <input type="number" name="room" required>
+    <label><b>STT</b></label>
+    <input type="number" name="id" required>
 
     <label><b>Mã sinh viên</b></label>
-    <input type="text" name="id" required>
+    <input type="text" name="st_id" required>
 
     <label><b>Tên sinh viên</b></label>
     <input type="text" name="name" required>
@@ -78,13 +77,17 @@
   </form>
 </div>
 <div class="form-popup" id="update_form">
-  <form action="/lichthi/Update" class="form-container">
+  <form action="/lichthi/UpdateDetail" method="POST" class="form-container">
     <h1>Chỉnh sửa thông tin lịch thi</h1>
+    
+    <label><b>STT</b></label>
+    <input type="number" id="room_id" name="room_id" readonly>
+
     <label><b>Phòng thi</b></label>
-    <input type="number" name="room" required>
+    <input type="text" name="room" required>
 
     <label><b>Mã sinh viên</b></label>
-    <input type="text" name="id" required>
+    <input type="text" id="stu_id" name="stu_id" readonly>
 
     <label><b>Tên sinh viên</b></label>
     <input type="text" name="name" required>
@@ -126,16 +129,16 @@
                     <tbody id="tbody1">
                         {{#each detail}} 
                             <form>
-                                <tr name="{{this.STT}}">
+                                <tr>
                                     <td>{{this.STT}}</td>                        
                                     <td>{{this.STTPHONGTHI}}</td>
                                     <td>{{this.MASO}}</td>
                                     <td>{{this.TENSV}}</td>                                 
                                     <td>
-                                        <button id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
+                                        <button name={{this.STT}}-{{this.MASO}} id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
                                     </td>   
                                     <td>
-                                        <button type="submit" class="deletebtn"><i class="fas fa-trash"></i></button>
+                                        <a href="/lichthi/DeleteDetail?id={{this.STT}}" type="submit" class="deletebtn"><i class="fas fa-trash"></i></a>
                                     </td>                                                                                                                                  
                                 </tr>                                                           
                             </form>
@@ -157,10 +160,17 @@
     document.getElementById("create").addEventListener("click", function(){
         document.getElementById("add-form").style.display = "block";
     })
-    var all_check = document.querySelectorAll("#update");
-    all_check.forEach(function(checkbox){
-        checkbox.addEventListener('click',function (){
+    var all_clicks = document.querySelectorAll("#update");
+    all_clicks.forEach(function(button){
+        button.addEventListener('click',function (){
         document.getElementById("update_form").style.display = "block";
+        var str = button.getAttribute('name');
+        var part = str.split("-");
+        var id = part[0];
+        var stu_id = part[1];
+        var form = document.getElementById("update_form");
+        form.querySelector('#room_id').value = id;
+        form.querySelector('#stu_id').value = stu_id;
         })
     })
 </script>

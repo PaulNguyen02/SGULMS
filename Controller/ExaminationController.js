@@ -49,15 +49,61 @@ class ExaminationController{
     }
 
     async create(req,res){
-        
+        const id = req.body["sub_id"];
+        const name = req.body["sub_name"];
+        const total = req.body["num"];
+        const date = req.body["date"];
+        const start = req.body["start"];
+        const room = req.body["room"];
+        const base = req.body["base"];
+        Promise.all([examination.Create(id, name, total, date , start, room, base)]);
+        res.redirect('/lichthi/List');
     }
 
     async update(req,res){
-        
+        const id = req.body["exam_id"];
+        const sub_id = req.body["sub_id"];
+        const name = req.body["sub_name"];
+        const total = req.body["num"];
+        const date = req.body["date"];
+        const start = req.body["start"];
+        const room = req.body["room"];
+        const base = req.body["base"];
+        Promise.all([examination.Update(id, sub_id, name, total, date , start, room, base)]);
+        res.redirect('/lichthi/List');
     }
 
     async delete(req,res){
-        
+        const id = req.query["id"];
+        Promise.all([examination.Delete(id)]);
+        res.redirect('/lichthi/List');
     }
+
+
+    async create_detail(req,res){
+        const id = req.body["id"];
+        const st_id = req.body["st_id"];
+        const name = req.body["name"];
+        const stt = req.body["stt"];
+        Promise.all([examination.Create_Detail( id, st_id, name, stt)]);
+        res.redirect('/lichthi/List');
+    }
+
+
+    async update_detail(req,res){
+        const room_id = req.body["room_id"];
+        const stu_id = req.body["stu_id"];
+        const name = req.body["name"];
+        const stt = req.body["stt"];
+        Promise.all([examination.Update_Detail(room_id, stu_id, name, stt)]);
+        res.redirect('/lichthi/List');
+    }
+
+    async delete_detail(req,res){
+        const id = req.query["id"];
+        Promise.all([examination.Delete_Detail(id)]);
+        res.redirect('/lichthi/List');
+    }
+
 }
 module.exports = new ExaminationController;

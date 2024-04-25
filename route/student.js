@@ -8,5 +8,6 @@ router.use(express.urlencoded({ extended: true }));
 router.get('/List', studentcontroller.list);
 router.post('/Create', studentcontroller.create);
 router.post('/Update', studentcontroller.update);
-router.post('/Delete', studentcontroller.delete);
+router.get('/Delete', studentcontroller.delete);
+router.post('/Search', studentcontroller.search);
 module.exports = router;

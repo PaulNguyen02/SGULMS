@@ -17,11 +17,15 @@ class ClassesController{
     }
 
     async Read(req,res){
-        
+        const id = req.query["id"];
+        Promise.all([opinion.Read(id)]);
+        res.redirect('/Ykien/List');
     }
 
     async Delete(req,res){
-        
+        const id = req.query["id"];
+        Promise.all([opinion.Delete(id)]);
+        res.redirect('/Ykien/List');
     }
 }
 module.exports = new ClassesController;

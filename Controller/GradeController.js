@@ -1,4 +1,5 @@
 const grade = require('../Model/GradeModel');
+const compute = require('../Model/BussinessCompute/Compute');
 class GradeController{
     //[GET]
     async index(req, res){
@@ -41,7 +42,16 @@ class GradeController{
     }
 
     async update(req,res){
-        
+        const subject_id = req.body["subject_id"];
+        const student_id = req.body["student_id"];
+        const mid10 = req.body["mid10"];
+        const exam10 = req.body["exam10"];
+        const final10 = req.body["final10"];
+        const final4 = req.body["final4"];
+        const ranking = compute.Ranking(final10);
+        const result = compute.Result(ranking);
+        Promise.all([grade.Update(subject_id, student_id, mid10, exam10, final10, final4, ranking, result)]);
+        res.redirect('/Diem/List');
     }
 }
 module.exports = new GradeController;

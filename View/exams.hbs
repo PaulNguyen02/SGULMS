@@ -58,14 +58,14 @@
     }
 </style>
 <div class="form-popup" id="add-form">
-  <form action="/lichthi/Create" class="form-container">
+  <form action="/lichthi/Create" method="POST" class="form-container">
     <h1>Tạo thông tin lịch thi</h1>
 
     <label><b>Mã môn học</b></label>
-    <input type="text" name="id" required>
+    <input type="text" name="sub_id" required>
 
     <label><b>Tên môn học</b></label>
-    <input type="text" name="name" required>
+    <input type="text" name="sub_name" required>
 
     <label><b>Sỉ số</b></label>
     <input type="number" name="num" required>
@@ -74,7 +74,7 @@
     <input type="date" name="date" required>
 
     <label><b>Giờ bắt đầu thi</b></label>
-    <input type="time" name="time" required>
+    <input type="time" name="start" required>
 
     <label><b>Phòng thi</b></label>
     <input type="text" name="room" required>
@@ -87,14 +87,17 @@
   </form>
 </div>
 <div class="form-popup" id="update_form">
-  <form action="/lichthi/Update" class="form-container">
+  <form action="/lichthi/Update" method="POST" class="form-container">
     <h1>Chỉnh sửa thông tin lịch thi</h1>
 
-     <label><b>Mã môn học</b></label>
-    <input type="text" name="id" required>
+    <label><b>STT</b></label>
+    <input id="exam_id" type="text" name="exam_id" readonly>
+
+    <label><b>Mã môn học</b></label>
+    <input type="text" id="sub_id" name="sub_id" readonly>
 
     <label><b>Tên môn học</b></label>
-    <input type="text" name="name" required>
+    <input type="text" name="sub_name" required>
 
     <label><b>Sỉ số</b></label>
     <input type="number" name="num" required>
@@ -103,7 +106,7 @@
     <input type="date" name="date" required>
 
     <label><b>Giờ bắt đầu thi</b></label>
-    <input type="time" name="time" required>
+    <input type="time" name="start" required>
 
     <label><b>Phòng thi</b></label>
     <input type="text" name="room" required>
@@ -150,7 +153,7 @@
                     <tbody id="tbody1">
                         {{#each exams}} 
                             <form>
-                                <tr name="{{this.STT}}">
+                                <tr>
                                     <td>{{this.STT}}</td>                        
                                     <td>{{this.MAMH}}</td>
                                     <td>{{this.TENMH}}</td>
@@ -160,10 +163,10 @@
                                     <td>{{this.PHONGTHI}}</td> 
                                     <td>{{this.COSO}}</td>                                      
                                     <td>
-                                        <button id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
+                                        <button name={{this.STT}}-{{this.MAMH}} id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
                                     </td>   
                                     <td>
-                                        <button type="submit" class="deletebtn"><i class="fas fa-trash"></i></button>
+                                        <a href="/lichthi/Delete?id={{this.STT}}" type="submit" class="deletebtn"><i class="fas fa-trash"></i></a>
                                     </td>  
                                     <td>
                                         <a id="detail" href="/lichthi/Detail?stt={{this.STT}}" type="button" class="readbtn"><i class="fas fa-list"></i></a>                                    
@@ -188,10 +191,17 @@
     document.getElementById("create").addEventListener("click", function(){
         document.getElementById("add-form").style.display = "block";
     })
-    var all_check = document.querySelectorAll("#update");
-    all_check.forEach(function(checkbox){
-        checkbox.addEventListener('click',function (){
+    var all_click = document.querySelectorAll("#update");
+    all_click.forEach(function(button){
+        button.addEventListener('click',function (){
         document.getElementById("update_form").style.display = "block";
+        var str = button.getAttribute('name');
+        var part = str.split("-");
+        var id = part[0];
+        var sub_id = part[1];
+        var form = document.getElementById("update_form");
+        form.querySelector('#exam_id').value = id;
+        form.querySelector('#sub_id').value = sub_id;
         })
     })
 </script>

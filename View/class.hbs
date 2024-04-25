@@ -47,7 +47,7 @@
     }
 </style>
 <div class="form-popup" id="add-form">
-  <form action="/Class/Create" method="POST" class="form-container">
+  <form action="/Lop/Create" method="POST" class="form-container">
     <h1>Tạo thông tin lớp</h1>
 
     <label><b>Mã lớp</b></label>
@@ -70,20 +70,23 @@
   </form>
 </div>
 <div class="form-popup" id="update_form">
-  <form action="/Class/Update" method="POST" class="form-container">
+  <form action="/Lop/Update" method="POST" class="form-container">
     <h1>Chỉnh sửa thông tin lớp</h1>
 
+    <label><b>Mã lớp</b></label>
+    <input type="text" id="class_id" name="class_id" readonly>
+
     <label><b>Khoa</b></label>
-    <input type="text" name="faculty" required>
+    <input type="text" name="faculty">
 
     <label><b>Niên khóa</b></label>
-    <input type="text" name="years" required>
+    <input type="text" name="years">
 
     <label><b>Sỉ số</b></label>
-    <input type="number" name="total" required>
+    <input type="number" name="total">
 
     <label><b>Cố vấn học tập</b></label>
-    <input type="text" name="teacher" required>
+    <input type="text" name="teacher">
 
     <button type="submit" class="btn">Cập Nhật</button>
     <button type="button" class="btn cancel" onclick="closeForm1()">Hủy</button>
@@ -120,17 +123,17 @@
                     <tbody id="tbody1">
                         {{#each classes}} 
                             <form>
-                                <tr name="{{this.MALOP}}">
+                                <tr>
                                     <td>{{this.MALOP}}</td>                        
                                     <td>{{this.KHOA}}</td>
                                     <td>{{this.NIENKHOA}}</td>
                                     <td>{{this.SISO}}</td>
                                     <td>{{this.CVHT}}</td>                                    
                                     <td>
-                                        <button id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
+                                        <button name="{{this.MALOP}}" id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
                                     </td>   
                                     <td>
-                                        <button type="submit" class="deletebtn"><i class="fas fa-trash"></i></button>
+                                        <a href="/Lop/Delete?id={{this.MALOP}}" type="submit" class="deletebtn"><i class="fas fa-trash"></i></a>
                                     </td>                                                                                                                                     
                                 </tr>                                                           
                             </form>
@@ -153,9 +156,12 @@
         document.getElementById("add-form").style.display = "block";
     })
     var all_check = document.querySelectorAll("#update");
-    all_check.forEach(function(checkbox){
-        checkbox.addEventListener('click',function (){
+    all_check.forEach(function(button){
+        button.addEventListener('click',function (){
         document.getElementById("update_form").style.display = "block";
+        var id = button.getAttribute('name');
+        var form = document.getElementById("update_form");
+        form.querySelector('#class_id').value = id;
         })
     })
 </script>

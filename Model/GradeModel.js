@@ -61,8 +61,23 @@ class GradeModel{
     }
 
 
-    async Update(id){
-
+    async Update(subject_id, student_id, mid10, exam10, final10, final4, ranking, result){
+        return new Promise((resolve, reject) =>{
+            try{
+                con.query("UPDATE DIEM SET DIEMQUATRINH10='"+mid10+"', DIEMCUOIKY10='"+exam10+"', DIEMTONGKET10='"+final10+"', DIEMTONGKET4='"+final4+"', XEPLOAI='"+ranking+"', KETQUA='"+result+"'"+
+                " WHERE MAMH='"+subject_id+"' AND MASO='"+student_id+"'",
+                function (err, result) {
+                    if (err){
+                        reject(err);
+                        return; 
+                    }        
+                    return resolve(result)
+                });
+            }
+            catch(e){
+                reject(e)
+            }
+        })  
     }
 
 }

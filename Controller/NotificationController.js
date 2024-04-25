@@ -17,23 +17,40 @@ class NotificationController{
     }
 
     async Create(req, res){
-        const mssv = req.body["mssv"];
-        const name = req.body["name"];
-        const dob = req.body["dob"];
-        
-        
+        const title = req.body["title"];
+        const content = req.body["content"];
+        const msgv = req.cookies.id;
+        Promise.all([noti.Create(title, content, msgv)]);
+        res.redirect('/Thongbao/List');
     }
 
     async Update(req, res){
-        const mssv = req.body["mssv"];
-        const name = req.body["name"];
-        const dob = req.body["dob"];
-        
-        
+        const title = req.body["title"];
+        const content = req.body["content"];
+        const noti_id = req.body["noti_id"];
+        const admin_id = req.body["admin_id"];
+        Promise.all([noti.Update(noti_id, title, content, admin_id)]);
+        res.redirect('/Thongbao/List');
     }
     
     async Delete(req,res){
+        const id = req.query["id"];
+        Promise.all([noti.Delete(id)]);
+        res.redirect('/Thongbao/List');
+    }
 
+    async ASC(req, res){
+        const [notifications] = await Promise.all([
+            noti.ASC()
+        ]);
+        return res.render("adminhome", {notifications})
+    }
+
+    async DESC(req, res){
+        const [notifications] = await Promise.all([
+            noti.DESC()
+        ]);
+        return res.render("adminhome", {notifications})
     }
 }
 module.exports = new NotificationController;

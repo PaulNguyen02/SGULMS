@@ -46,38 +46,39 @@
     }
 </style>
 <div class="form-popup" id="add-form">
-  <form action="/Nienkhoa/Create" class="form-container">
+  <form action="/Nienkhoa/Create" method="POST" class="form-container">
     <h1>Tạo thông tin niên khóa</h1>
 
     <label><b>Học kỳ</b></label>
     <input type="text" name="semester" required>
 
     <label><b>Thời gian bắt đầu</b></label>
-    <input type="text" name="start" required>
+    <input type="date" name="start" required>
 
     <label><b>Thời gian kết thúc</b></label>
-    <input type="text" name="end" required>
+    <input type="date" name="end" required>
 
     <label><b>Niên khóa</b></label>
     <input type="text" name="schoolyear" required>
-
 
     <button type="submit" class="btn">Tạo</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Hủy</button>
   </form>
 </div>
 <div class="form-popup" id="update_form">
-  <form action="/action_page.php" class="form-container">
+  <form action="/Nienkhoa/Update" method="POST" class="form-container">
     <h1>Chỉnh sửa thông tin lớp</h1>
+    <label><b>STT</b></label>
+    <input id="sy_id" type="text" name="sy_id" readonly>
 
     <label><b>Học kỳ</b></label>
     <input type="text" name="semester" required>
 
     <label><b>Thời gian bắt đầu</b></label>
-    <input type="text" name="start" required>
+    <input type="date" name="start" required>
 
     <label><b>Thời gian kết thúc</b></label>
-    <input type="text" name="end" required>
+    <input type="date" name="end" required>
 
     <label><b>Niên khóa</b></label>
     <input type="text" name="schoolyear" required>
@@ -91,12 +92,6 @@
         <div class="full graph_head">
             <div class="inbox-head">                
                 <h3>Danh sách niên khóa</h3>               
-                <form action="/Dkmh/Search" class="pull-right position search_inbox" method="POST">
-                    <div class="input-append">
-                        <input type="text" class="sr-input" name="search" list="searchlist" placeholder="Mã sinh viên">
-                        <button class="btn sr-btn" type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </form>
             </div>
         </div>        
         <div id="tableContainer" class="table_section padding_infor_info">
@@ -117,14 +112,14 @@
                     <tbody id="tbody1">
                         {{#each schoolyear}} 
                             <form>
-                                <tr name="{{this.STT}}">
+                                <tr>
                                     <td>{{this.STT}}</td>                        
                                     <td>{{this.HOCKY}}</td>
                                     <td>{{this.TGBATDAU}}</td>
                                     <td>{{this.TGKETTHUC}}</td>
                                     <td>{{this.NIENKHOA}}</td>  
                                     <td>
-                                        <button id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
+                                        <button name={{this.STT}} id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
                                     </td> 
                                     <td>
                                         <a id="read" href="/Nienkhoa/Detail?stt={{this.STT}}" type="button" class="readbtn"><i class="fas fa-eye"></i></a>                                    
@@ -149,10 +144,13 @@
     document.getElementById("create").addEventListener("click", function(){
         document.getElementById("add-form").style.display = "block";
     })
-    var all_check = document.querySelectorAll("#update");
-    all_check.forEach(function(checkbox){
-        checkbox.addEventListener('click',function (){
+    var all_clicks = document.querySelectorAll("#update");
+    all_clicks.forEach(function(button){
+        button.addEventListener('click',function (){
         document.getElementById("update_form").style.display = "block";
+        var id = button.getAttribute('name');
+        var form = document.getElementById("update_form");
+        form.querySelector('#sy_id').value = id;
         })
     })
 </script>

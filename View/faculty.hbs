@@ -47,7 +47,7 @@
     }
 </style>
 <div class="form-popup" id="add-form">
-  <form action="/Khoa/Create" class="form-container">
+  <form action="/Khoa/Create" class="form-container" method="POST">
     <h1>Tạo thông tin khoa</h1>
 
     <label><b>Mã khoa</b></label>
@@ -70,23 +70,23 @@
   </form>
 </div>
 <div class="form-popup" id="update_form">
-  <form action="/Khoa/Update" class="form-container">
+  <form action="/Khoa/Update" class="form-container" method="POST">
     <h1>Cập nhật thông tin khoa</h1>
 
     <label><b>Mã khoa</b></label>
-    <input type="text" name="faculty_id" required>
+    <input type="text" id="faculty_id" name="faculty_id" readonly>
 
     <label><b>Tên khoa</b></label>
-    <input type="text" name="faculty" required>
+    <input type="text" name="faculty">
 
     <label><b>Trưởng khoa</b></label>
-    <input type="text" name="teacher" required>
+    <input type="text" name="teacher">
 
     <label><b>Phòng</b></label>
-    <input type="text" name="room" required>
+    <input type="text" name="room">
 
     <label><b>Số điện thoại</b></label>
-    <input type="text" name="phonenumber" required>
+    <input type="text" name="phonenumber">
 
     <button type="submit" class="btn">Cập nhật</button>
     <button type="button" class="btn cancel" onclick="closeForm1()">Hủy</button>
@@ -96,15 +96,7 @@
     <div id="container" class="white_shd full margin_bottom_30">
         <div class="full graph_head">
             <div class="inbox-head">                
-                <h3>Danh sách khoa</h3>               
-                <div class="pull-right position search_inbox">
-                    <div class="input-append">
-                        <select id="choose" class="sr-input">
-                            <option value="1">A-Z</option>
-                            <option value="2">Z-A</option>
-                        </select>
-                    </div>
-                </div>
+                <h3>Danh sách khoa</h3>                              
             </div>
         </div>       
         <div id="tableContainer" class="table_section padding_infor_info">
@@ -132,10 +124,10 @@
                                     <td>{{this.PHONG}}</td>
                                     <td>{{this.SDT}}</td>                                    
                                     <td>
-                                        <button id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
+                                        <button name={{this.MAKHOA}} id="update" type="button" class="updatebtn"><i class="far fa-edit"></i></button>                                    
                                     </td>   
                                     <td>
-                                        <button type="submit" class="deletebtn"><i class="fas fa-trash"></i></button>
+                                        <a href="/Khoa/Delete?id={{this.MAKHOA}}" type="submit" class="deletebtn"><i class="fas fa-trash"></i></a>
                                     </td>                                                                                                                                     
                                 </tr>                                                           
                             </form>
@@ -158,9 +150,12 @@
         document.getElementById("add-form").style.display = "block";
     })
     var all_check = document.querySelectorAll("#update");
-    all_check.forEach(function(checkbox){
-        checkbox.addEventListener('click',function (){
+    all_check.forEach(function(button){
+        button.addEventListener('click',function (){
         document.getElementById("update_form").style.display = "block";
+        var id = button.getAttribute('name');
+        var form = document.getElementById("update_form");
+        form.querySelector('#faculty_id').value = id;
         })
     })
 </script>

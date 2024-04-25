@@ -72,10 +72,11 @@ class StudentController{
                 res.send("Success, Image uploaded!");
             }
         });
-        
+        res.redirect('/Sinhvien/List');
     }
 
     async update(req, res){
+        const id = req.body["id"];
         const name = req.body["name"];
         const dob = req.body["dob"];
         const address = req.body["address"];
@@ -84,14 +85,23 @@ class StudentController{
         const department = req.body["department"];
         const faculty = req.body["faculty"];
         const year = req.body["year"];
-        
-
+        Promise.all([student.Update(id, name, dob, address, email, classes, department, faculty, year)]);
+        res.redirect('/Sinhvien/List');
     }
 
     async delete(req, res){
+        const id = req.query["id"];
+        Promise.all([student.Delete(id)]);
+        res.redirect('/Sinhvien/List');
+    }   
 
+    async search(req, res){
+        const id = req.body["search"]; 
+        const [students] = await Promise.all([
+            student.Search(id)
+        ]);
+        return res.render("student", {students});
     }
-
     
 }
 module.exports = new StudentController;
